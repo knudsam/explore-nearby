@@ -1,72 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Explore Nearby</title>
-    <!-- Add links to CSS frameworks and stylesheets here -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
-  </head>
-  <body>
-    <header>
-      <h1>Explore Nearby</h1>
-      <form id="search-form">
-        <input type="text" id="search-input" placeholder="Search for places..." />
-        <select id="search-types">
-          <option value="restaurant">Restaurant</option>
-          <option value="cafe">Cafe</option>
-          <option value="park">Park</option>
-          <option value="museum">Museum</option>
-          <!-- Add more search types here as needed -->
-        </select>
-        <button type="submit" id="search-button">Search</button>
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore Nearby</title>
+  <link rel="stylesheet" href="./assets/css/style.css"/>
+</head>
+
+<body>
+  <header>
+    <h1>Explore Nearby</h1>
+    <form id="search-form">
+      <input type="text" id="search-input" placeholder="Search for places">
+      <select id="search-type">
+        <option value="restaurant">Restaurants</option>
+        <option value="parks">Parks</option>
+        <option value="attractions">Attractions</option>
+        <option value="hotels">Hotels</option>
+        <!--Add more search types as needed-->
+      </select>
+      <button type="submit" id="search-button">Search</button>
+    </form>
+  </header>
+
+  <main>
+    <div id="map-container"></div>
+    <div id="results-container"></div>
+    <!--Add List of Nearby Places and Details here-->
+    <div id="review-form-container">
+      <form id="review-form">
+        <h2>Leave a Review</h2>
+        <div class="form-group">
+          <label for="name-input">Name</label>
+          <input type="text" id="name-input" required />
+        </div>
+        <div class="form-group">
+          <label for="rating-input">Rating: </label>
+          <select id="rating-input" required>
+            <option value="">Select a rating: </option>
+            <option value="5">5 stars</option>
+            <option value="4">4 stars</option>
+            <option value="3">3 stars</option>
+            <option value="2">2 stars</option>
+            <option value="1">1 star</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="comment-input">Comment: </label>
+          <textarea id="comment-input" required></textarea>
+        </div>
+
+        <button type="submit">Submit</button>
       </form>
-    </header>
-    <main>
-      <div id="map-container"></div>
-      <div id="results-container">
-        <!-- Add list of nearby places and details here -->
-      </div>
-      <div id="review-form-container">
-        <form id="review-form">
-          <h2>Leave a review</h2>
-          <div class="form-group">
-            <label for="name-input">Name:</label>
-            <input type="text" id="name-input" required />
-          </div>
-          <div class="form-group">
-            <label for="rating-input">Rating:</label>
-            <select id="rating-input" required>
-              <option value="">Select a rating</option>
-              <option value="5">5 stars</option>
-              <option value="4">4 stars</option>
-              <option value="3">3 stars</option>
-              <option value="2">2 stars</option>
-              <option value="1">1 star</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="comment-input">Comment:</label>
-            <textarea id="comment-input" required></textarea>
-          </div>
-          <button type="submit">Submit review</button>
-        </form>
-      </div>
-    </main>
-    <footer>
-      <p>&copy; 2023 Explore Nearby</p>
-    </footer>
-    <!-- Add links to JavaScript files and APIs here -->
-    <script>
-      function initMap() {
-        let mapOptions = {
-          center: new google.maps.LatLng('41.881832', '-87.623177'),
-          zoom: 15
-        }
-        let map = new google.maps.Map(document.getElementById('map-container'), mapOptions);
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADJ534OZMnSqGaHgy3zHYwIkKHXiy_1Ig&callback=initMap"></script>
-    <script src="./assets/script/script.js"></script>
-  </body>
+    </div>
+  </main>
+  <footer>
+    <p> &copy;Explore Nearby 2023</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+</body>
+
 </html>
