@@ -91,7 +91,7 @@ input [type = "text"],select,textarea {
 
 input [type = "text"]:focus,select:focus,textarea:focus {
     outline: none;
-    border-bottom: 2px solid greenyellow;
+    border-bottom: 2px solid rgb(255, 47, 47);
 }
 
 button [type = "submit"] {
@@ -105,8 +105,4 @@ button [type = "submit"] {
 
 button [type = "submit"]:hover {
     background-color: darkcyan;
-}
-
-.review-form {
-
 }
