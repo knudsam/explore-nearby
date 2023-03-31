@@ -1,83 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore Nearby</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Explore Nearby</title>
-  <link rel="stylesheet" href="./assets/css/style.css" />
-</head>
+  <body>
+    <header>
+      <h1>Explore Nearby</h1>
+      <!-- Search form for searching nearby places -->
+      <form id="search-form">
+        <input type="text" id="search-input" placeholder="Search for places" />
+        <select id="search-type">
+          <option value="restaurant">Restaurants</option>
+          <option value="parks">Parks</option>
+          <option value="attractions">Attractions</option>
+          <option value="hotels">Hotels</option>
+          <!--Add more search types as needed-->
+        </select>
+        <button type="submit" id="search-button">Search</button>
+      </form>
+    </header>
 
-<body>
-  <header>
-    <h1>Explore Nearby</h1>
-    <form id="search-form">
-      <input type="text" id="search-input" placeholder="Search for places">
-      <select id="search-type">
-        <option value="restaurant">Restaurants</option>
-        <option value="parks">Parks</option>
-        <option value="attractions">Attractions</option>
-        <option value="hotels">Hotels</option>
-        <!--Add more search types as needed-->
-      </select>
-      <button type="submit" id="search-button">Search</button>
-    </form>
-  </header>
+    <main>
+      <!-- Container for the map display -->
+      <div id="map-container"></div>
+      <!-- Container for displaying search results -->
+      <div id="results-container"></div>
+      <!-- Container for leaving reviews -->
+      <div id="review-form-container">
+        <!-- Form for leaving a review -->
+        <form id="review-form">
+          <h2>Leave a Review</h2>
+          <div class="form-group">
+            <label for="name-input">Name</label>
+            <input type="text" id="name-input" required />
+          </div>
+          <div class="form-group">
+            <label for="rating-input">Rating: </label>
+            <select id="rating-input" required>
+              <option value="">Select a rating:</option>
+              <option value="5">5 stars</option>
+              <option value="4">4 stars</option>
+              <option value="3">3 stars</option>
+              <option value="2">2 stars</option>
+              <option value="1">1 star</option>
+            </select>
+          </div>
 
-  <main>
-    <div id="map-container"></div>
-    <div id="results-container"></div>
-    <!--Add List of Nearby Places and Details here-->
-    <div id="review-form-container">
-      <form id="review-form">
-        <h2>Leave a Review</h2>
-        <div class="form-group">
-          <label for="name-input">Name</label>
-          <input type="text" id="name-input" required />
-        </div>
-        <div class="form-group">
-          <label for="rating-input">Rating: </label>
-          <select id="rating-input" required>
-            <option value="">Select a rating: </option>
-            <option value="5">5 stars</option>
-            <option value="4">4 stars</option>
-            <option value="3">3 stars</option>
-            <option value="2">2 stars</option>
-            <option value="1">1 star</option>
-          </select>
-        </div>
-
-        <div id="modal" class="modal">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2>Thank you for your review!</h2>
-            </div>
-            <div class="modal-body">
-              <p>Your review has been submitted successfully.</p>
-            </div>
-            <div class="modal-footer">
-              <button id="modal-close-btn" class="modal-close-btn">Close</button>
+          <!-- Modal for displaying review submission success message -->
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2>Thank you for your review!</h2>
+              </div>
+              <div class="modal-body">
+                <p>Your review has been submitted successfully.</p>
+              </div>
+              <div class="modal-footer">
+                <button id="modal-close-btn" class="modal-close-btn">
+                  Close
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="comment-input">Comment: </label>
-          <textarea id="comment-input" required></textarea>
-        </div>
 
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  </main>
-  <footer>
-    <p> &copy;Explore Nearby 2023</p>
-  </footer>
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADJ534OZMnSqGaHgy3zHYwIkKHXiy_1Ig&callback=initMap"></script>
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-  <script src="./assets/script/script.js"></script>
-</body>
+          <div class="form-group">
+            <label for="comment-input">Comment: </label>
+            <textarea id="comment-input" required></textarea>
+          </div>
 
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </main>
+
+    <!-- Footer section -->
+
+    <footer>
+      <p>&copy;Explore Nearby 2023</p>
+    </footer>
+
+    <!-- Load the Google Maps API and other necessary scripts -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script src="./assets/script/script.js"></script>
+  </body>
 </html>

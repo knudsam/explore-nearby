@@ -18,7 +18,7 @@ function initMap() {
         title: "You are here",
       });
     },
-    function() {
+    function () {
       alert("Could not retrieve your location.");
     }
   );
@@ -27,7 +27,7 @@ function initMap() {
 // Retrieve nearby places based on user's location and selected search type
 const searchTypes = document.getElementById("search-type");
 const searchButton = document.getElementById("search-button");
-searchButton.addEventListener("click", function(event) {
+searchButton.addEventListener("click", function (event) {
   event.preventDefault();
   const lat = map.getCenter().lat();
   const lng = map.getCenter().lng();
@@ -54,15 +54,15 @@ function displayResults(results, status) {
         map: map,
         title: place.name,
       });
- // Add place details and review form to the results container
-const resultDiv = document.createElement("div");
-resultDiv.classList.add("result");
-resultDiv.innerHTML = `
+      // Add place details and review form to the results container
+      const resultDiv = document.createElement("div");
+      resultDiv.classList.add("result");
+      resultDiv.innerHTML = `
   <h2>${place.name}</h2>
   <p>${place.vicinity}</p>
   <div class="rating">
-    <img src="${place.rating ? 'star.png' : 'no-star.png'}" alt="star" />
-    <span>${place.rating ? place.rating.toFixed(1) : 'N/A'}</span>
+    <img src="${place.rating ? "star.png" : "no-star.png"}" alt="star" />
+    <span>${place.rating ? place.rating.toFixed(1) : "N/A"}</span>
   </div>
   <a href="${place.website}" target="_blank">${place.website}</a>
   <form class="review-form">
@@ -89,68 +89,69 @@ resultDiv.innerHTML = `
     <button type="submit">Submit review</button>
   </form>
   <ul class="review-list"></ul>
-`; 
-        resultsContainer.appendChild(resultDiv);
-        // Listen for submission of review form
-        const reviewForm = resultDiv.querySelector(".review-form");
-        reviewForm.addEventListener("submit", function(event) {
-          event.preventDefault();
-          const name = this.querySelector("#name-input").value;
-          const rating = this.querySelector("#rating-input").value;
-          const comment = this.querySelector("#comment-input").value;
-          const review = {
-            name: name,
-            rating: rating,
-            comment: comment,
-          };
-          // Store the review in local storage
-          const reviews = JSON.parse(localStorage.getItem("reviews")) || {};
-          const placeId = place.place_id;
-          if (!reviews[placeId]) {
-            reviews[placeId] = [];
-          }
-          reviews[placeId].push(review);
-          localStorage.setItem("reviews", JSON.stringify(reviews));
-          
+`;
+      resultsContainer.appendChild(resultDiv);
+      // Listen for submission of review form
+      const reviewForm = resultDiv.querySelector(".review-form");
+      reviewForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const name = this.querySelector("#name-input").value;
+        const rating = this.querySelector("#rating-input").value;
+        const comment = this.querySelector("#comment-input").value;
+        const review = {
+          name: name,
+          rating: rating,
+          comment: comment,
+        };
+        // Store the review in local storage
+        const reviews = JSON.parse(localStorage.getItem("reviews")) || {};
+        const placeId = place.place_id;
+        if (!reviews[placeId]) {
+          reviews[placeId] = [];
+        }
+        reviews[placeId].push(review);
+        localStorage.setItem("reviews", JSON.stringify(reviews));
 
-          // Show the modal when the review is submitted
-const modal = document.getElementById("modal");
-const modalCloseBtn = document.getElementById("modal-close-btn");
-modal.classList.add("active");
-modalCloseBtn.addEventListener("click", function() {
-  modal.classList.remove("active");
-});
+        // Show the modal when the review is submitted
+        const modal = document.getElementById("modal");
+        const modalCloseBtn = document.getElementById("modal-close-btn");
+        modal.classList.add("active");
+        modalCloseBtn.addEventListener("click", function () {
+          modal.classList.remove("active");
+        });
 
-
-          // Display the review in the place details
-          const reviewList = resultDiv.querySelector(".review-list");
-          const newReview = document.createElement("li");
-          newReview.innerHTML = `
+        // Display the review in the place details
+        const reviewList = resultDiv.querySelector(".review-list");
+        const newReview = document.createElement("li");
+        newReview.innerHTML = `
             <div class="review-header">
               <h4>${name}</h4>
-              <img src="${rating > 0 ? 'star.png' : 'no-star.png'}" alt="star" />
-              <span>${rating > 0 ? rating + ' stars' : 'N/A'}</span>
+              <img src="${
+                rating > 0 ? "star.png" : "no-star.png"
+              }" alt="star" />
+              <span>${rating > 0 ? rating + " stars" : "N/A"}</span>
             </div>
             <div class="review-body">
               <p>${comment}</p>
             </div>
           `;
-          reviewList.appendChild(newReview);
-        });
-      }
+        reviewList.appendChild(newReview);
+      });
     }
   }
-  
-	  // Load the Google Maps API
-    function loadMapsAPI() {
-      const script = document.createElement("script");
-      script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyADJ534OZMnSqGaHgy3zHYwIkKHXiy_1Ig&libraries=places&callback=initMap";
-      script.defer = true;
-      script.async = true;
-      document.head.appendChild(script);
-      }
-  
-  // Wait for the DOM to load before initializing the application
-  document.addEventListener("DOMContentLoaded", function() {
+}
+
+// Load the Google Maps API
+function loadMapsAPI() {
+  const script = document.createElement("script");
+  script.src =
+    "https://maps.googleapis.com/maps/api/js?key=AIzaSyADJ534OZMnSqGaHgy3zHYwIkKHXiy_1Ig&libraries=places&callback=initMap";
+  script.defer = true;
+  script.async = true;
+  document.head.appendChild(script);
+}
+
+// Wait for the DOM to load before initializing the application
+document.addEventListener("DOMContentLoaded", function () {
   loadMapsAPI();
-  });
+});

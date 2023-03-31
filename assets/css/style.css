@@ -1,15 +1,22 @@
-/* Global styles */
+/* Set the font and margin/padding for the entire body */
 body {
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   margin: 0;
   padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+/* Set the font weight and margin for all heading tags */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: bold;
   margin: 0;
 }
 
+/* Set the styles for the header section */
 header {
   background-color: #333;
   color: #fff;
@@ -19,10 +26,12 @@ header {
   padding: 1rem;
 }
 
+/* Set the font size for the main heading */
 header h1 {
   font-size: 2rem;
 }
 
+/* Set the styles for the search form */
 #search-form {
   display: flex;
   justify-content: center;
@@ -30,6 +39,7 @@ header h1 {
   margin-bottom: 2rem;
 }
 
+/* Set the styles for the search input field */
 #search-input {
   font-size: 1.2rem;
   padding: 0.5rem;
@@ -41,11 +51,13 @@ header h1 {
   transition: border-bottom-color 0.2s ease-in-out;
 }
 
+/* Set the styles for the search input field when it is focused */
 #search-input:focus {
   outline: none;
   border-bottom-color: #333;
 }
 
+/* Set the styles for the search button */
 #search-button {
   background-color: #ff5722;
   color: #fff;
@@ -56,28 +68,33 @@ header h1 {
   transition: background-color 0.2s ease-in-out;
 }
 
+/* Set the styles for the search button when it is hovered */
 #search-button:hover {
   background-color: #333;
 }
 
+/* Set the flex and alignment styles for the main section */
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* Set the styles for the map container */
 #map-container {
   width: 100%;
   height: 400px;
   margin: 1rem 0;
 }
 
+/* Set the styles for the results container */
 #results-container {
   width: 100%;
   max-width: 800px;
   margin-bottom: 1rem;
 }
 
+/* Set the styles for the individual result containers */
 .result {
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -85,32 +102,38 @@ main {
   margin-bottom: 1rem;
 }
 
+/* Set the styles for the heading of each result container */
 .result h2 {
   font-size: 1.5rem;
   margin: 0;
   color: #333;
 }
 
+/* Set the styles for the text content of each result container */
 .result p {
   margin: 0.5rem 0;
 }
 
+/* Set the styles for the links in each result container */
 .result a {
   color: #ff5722;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
 }
 
+/* Set the styles for the links in each result container when they are hovered */
 .result a:hover {
   color: #333;
 }
 
+/* Set the styles for the images in each result container */
 .result img {
   width: 100%;
   height: auto;
   margin: 0.5rem 0;
 }
 
+/* Set the styles for the rating section in each result container */
 .rating {
   display: flex;
   align-items: center;
@@ -134,11 +157,11 @@ main {
   content: url(star.png);
 }
 
-.rating img[src="no-star.png"] {
+/*.rating img[src="no-star.png"] {
   content: url(no-star.png);
 }
 
-
+/* Set the styles for the review form */
 .review-form {
   margin-top: 1rem;
 }
@@ -169,7 +192,6 @@ textarea {
   border: none;
   border-bottom: 2px solid #ff5722;
   transition: border-bottom-color 0.2s;
-
 }
 input[type="text"]:focus,
 select:focus,
@@ -178,120 +200,127 @@ textarea:focus {
   border-bottom-color: #333;
 }
 
- 
-  button[type="submit"] {
-    background-color: #ff5722;
-    color: #fff;
-    border: none;
-    font-size: 1.2rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-  }
- 
-  button[type="submit"]:hover {
-    background-color: #333;
-  }
- 
-  .review-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
- 
-  .review-list li {
-    margin-bottom: 1rem;
-  }
- 
-  .review-header {
-    display: flex;
-    align-items: center;
-  }
- 
-  .review-header h4 {
-    font-size: 1.2rem;
-    margin: 0;
-    color: #333;
-  }
- 
-  .review-header img {
-    width: 20px;
-    height: 20px;
-    margin-right: 0.5rem;
-  }
- 
-  .review-header span {
-    font-weight: bold;
-    color: #ff5722;
-  }
- 
-  .review-body {
-    margin-top: 0.5rem;
-  }
- 
-  .review-body p {
-    margin: 0;
-    color: #333;
-  }
+/* Set the styles for the submit button in the review form */
+button[type="submit"] {
+  background-color: #ff5722;
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
 
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease-in-out, visibility 0s linear 0.2s;
-  }
-  
-  .modal.active {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.2s ease-in-out, visibility 0s linear 0s;
-  }
-  
-  .modal-content {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 5px;
-    max-width: 600px;
-    text-align: center;
-  }
-  
-  .modal-header h2 {
-    font-size: 1.5rem;
-    margin: 0;
-    color: #333;
-  }
-  
-  .modal-body p {
-    font-size: 1.2rem;
-    margin: 1rem 0;
-    color: #333;
-  }
-  
-  .modal-footer {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .modal-footer button {
-    background-color: #ff5722;
-    color: #fff;
-    border: none;
-    font-size: 1.2rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .modal-footer button:hover {
-    background-color: #333;
-  }
-  
+button[type="submit"]:hover {
+  background-color: #333;
+}
+
+/* Set the styles for the list of reviews */
+.review-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.review-list li {
+  margin-bottom: 1rem;
+}
+
+/* Set the styles for the header of each review */
+.review-header {
+  display: flex;
+  align-items: center;
+}
+
+.review-header h4 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #333;
+}
+
+.review-header img {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+}
+
+.review-header span {
+  font-weight: bold;
+  color: #ff5722;
+}
+
+/* Set the styles for the body of each review */
+.review-body {
+  margin-top: 0.5rem;
+}
+
+.review-body p {
+  margin: 0;
+  color: #333;
+}
+
+/* Set the styles for the modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0s linear 0.2s;
+}
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s ease-in-out, visibility 0s linear 0s;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 5px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.modal-header h2 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #333;
+}
+
+/* Sets the font size, margin, and color for the paragraphs in the modal body */
+.modal-body p {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  color: #333;
+}
+
+/* Sets the display and justification for the modal footer */
+.modal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+/* Sets the background color, font color, border, font size, padding, cursor, and transition for the button in the modal footer */
+.modal-footer button {
+  background-color: #ff5722;
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Sets the background color when the button in the modal footer is hovered over */
+.modal-footer button:hover {
+  background-color: #333;
+}
