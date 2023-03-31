@@ -59,9 +59,17 @@
   <footer>
     <p> &copy;Explore Nearby 2023</p>
   </footer>
-
+  <script>
+  function initMap() {
+    let mapOptions = {
+      center: new google.maps.LatLng('41.881832', '-87.623177'),
+      zoom: 15
+    }
+    let map = new google.maps.Map(document.getElementById('map-container'), mapOptions);
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADJ534OZMnSqGaHgy3zHYwIkKHXiy_1Ig&callback=initMap"></script>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
 </body>
-
 </html>
