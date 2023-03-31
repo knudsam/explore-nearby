@@ -61,7 +61,7 @@ function displayResults(results, status) {
   <h2>${place.name}</h2>
   <p>${place.vicinity}</p>
   <div class="rating">
-    <img src="${place.rating ? "star.png" : "no-star.png"}" alt="star" />
+    <img src="${place.rating ? "./assets/images/star.jpg" : "no-star.png"}" alt="star" />
     <span>${place.rating ? place.rating.toFixed(1) : "N/A"}</span>
   </div>
   <a href="${place.website}" target="_blank">${place.website}</a>
@@ -127,7 +127,7 @@ function displayResults(results, status) {
             <div class="review-header">
               <h4>${name}</h4>
               <img src="${
-                rating > 0 ? "star.png" : "no-star.png"
+                rating > 0 ? "/assets/images/star.jpg" : "no-star.png"
               }" alt="star" />
               <span>${rating > 0 ? rating + " stars" : "N/A"}</span>
             </div>
