@@ -141,14 +141,14 @@ modalCloseBtn.addEventListener("click", function() {
     }
   }
   
-  // Load the Google Maps API
-  function loadMapsAPI() {
-    const script = document.createElement("script");
-    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyADJ534OZMnSqGaHgy3zHYwIkKHXiy_1Ig&libraries=places&callback=initMap";
-    script.defer = true;
-    script.async = true;
-    document.head.appendChild(script);
-    }
+	  // Load the Google Maps API
+    function loadMapsAPI() {
+      const script = document.createElement("script");
+      script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyADJ534OZMnSqGaHgy3zHYwIkKHXiy_1Ig&libraries=places&callback=initMap";
+      script.defer = true;
+      script.async = true;
+      document.head.appendChild(script);
+      }
   
   // Wait for the DOM to load before initializing the application
   document.addEventListener("DOMContentLoaded", function() {
