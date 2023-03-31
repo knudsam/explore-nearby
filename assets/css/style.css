@@ -127,6 +127,18 @@ main {
   color: #ff5722;
 }
 
+.rating img {
+  height: 16px;
+  width: 16px;
+  margin-right: 5px;
+  content: url(star.png);
+}
+
+.rating img[src="no-star.png"] {
+  content: url(no-star.png);
+}
+
+
 .review-form {
   margin-top: 1rem;
 }
@@ -221,3 +233,65 @@ textarea:focus {
     margin: 0;
     color: #333;
   }
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out, visibility 0s linear 0.2s;
+  }
+  
+  .modal.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.2s ease-in-out, visibility 0s linear 0s;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 5px;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  .modal-header h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #333;
+  }
+  
+  .modal-body p {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    color: #333;
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .modal-footer button {
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .modal-footer button:hover {
+    background-color: #333;
+  }
+  

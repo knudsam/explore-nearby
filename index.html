@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Explore Nearby</title>
-  <link rel="stylesheet" href="./assets/css/style.css"/>
+  <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 
 <body>
@@ -47,6 +47,20 @@
           </select>
         </div>
 
+        <div id="modal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2>Thank you for your review!</h2>
+            </div>
+            <div class="modal-body">
+              <p>Your review has been submitted successfully.</p>
+            </div>
+            <div class="modal-footer">
+              <button id="modal-close-btn" class="modal-close-btn">Close</button>
+            </div>
+          </div>
+        </div>
+        
         <div class="form-group">
           <label for="comment-input">Comment: </label>
           <textarea id="comment-input" required></textarea>
@@ -59,17 +73,11 @@
   <footer>
     <p> &copy;Explore Nearby 2023</p>
   </footer>
-  <script>
-  function initMap() {
-    let mapOptions = {
-      center: new google.maps.LatLng('41.881832', '-87.623177'),
-      zoom: 15
-    }
-    let map = new google.maps.Map(document.getElementById('map-container'), mapOptions);
-  }
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADJ534OZMnSqGaHgy3zHYwIkKHXiy_1Ig&callback=initMap"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADJ534OZMnSqGaHgy3zHYwIkKHXiy_1Ig&callback=initMap"></script>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+  <script src="./assets/script/script.js"></script>
 </body>
+
 </html>
