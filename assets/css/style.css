@@ -366,6 +366,8 @@ footer {
   height: 80px;
   background-color: #333;
   color: #fff;
+  font-weight: 600;
+  margin: 1px;
 }
 
 footer p {
