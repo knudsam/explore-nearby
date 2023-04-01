@@ -26,6 +26,22 @@ header {
   padding: 1rem;
 }
 
+/* Style for the title for our webpage */
+
+.title-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.title-description {
+  color: #ff5722;
+  font-style: italic;
+  font-weight: 600;
+}
+
 /* Set the font size for the main heading */
 header h1 {
   font-size: 2rem;
@@ -177,11 +193,23 @@ main {
   margin: 1rem 0;
 }
 
+/* Set the styles for all other labels */
 label {
   display: block;
   font-weight: bold;
   margin-bottom: 0.5rem;
   color: #333;
+}
+
+/* Set the color for email and password for login form */
+label[for="email-inputlogin"],
+label[for="password-input"] {
+  color: #fff;
+}
+
+/* label with the for attribute value of "email-input" and set its text color to the specified RGB value.*/
+label[for="email-input"] {
+  color: rgb(51, 51, 51);
 }
 
 input[type="text"],
@@ -194,6 +222,7 @@ textarea {
   border-bottom: 2px solid #ff5722;
   transition: border-bottom-color 0.2s;
 }
+
 input[type="text"]:focus,
 select:focus,
 textarea:focus {
@@ -211,6 +240,7 @@ button[type="submit"] {
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 button[type="submit"]:hover {
@@ -358,4 +388,85 @@ footer p {
   color: #f00;
 }
 
+#confirmation-msg {
+  display: none;
+  position: absolute;
+  bottom: -745px;
+  right: 50%;
+  transform: translateX(50%);
+  padding: 10px;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+  z-index: 1;
+}
 
+/* Style for personalized services */
+
+#services-container {
+  background-color: #f8f8f8;
+  padding: 4rem;
+  text-align: center;
+}
+
+#services-container h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+#services-container p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
+#services-container ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+#services-container li {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+#learn-more-btn {
+  background-color: #ff5722;
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#learn-more-btn:hover {
+  background-color: #333;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+#review-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Style for the search box to fade in and out every five second. You can adjust the animation */
+#map-search-box {
+  animation: blink 5s linear infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

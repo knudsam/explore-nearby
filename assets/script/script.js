@@ -1,4 +1,4 @@
-let map; // Define the map variable in the global scope
+let map;
 
 // Initialize the Google Maps API
 function initMap() {
@@ -16,6 +16,22 @@ function initMap() {
         position: { lat: lat, lng: lng },
         map: map,
         title: "You are here",
+      });
+
+      // function to initialize the Google Places Autocomplete feature
+      const input = document.getElementById("map-search-box");
+      const autocomplete = new google.maps.places.Autocomplete(input);
+      autocomplete.bindTo("bounds", map);
+
+      // function to add a listener for place changes
+      autocomplete.addListener("place_changed", function () {
+        const place = autocomplete.getPlace();
+        if (place.geometry) {
+          map.setCenter(place.geometry.location);
+          map.setZoom(15);
+        } else {
+          alert("No details available for input: '" + place.name + "'");
+        }
       });
     },
     function () {
@@ -46,6 +62,8 @@ function displayResults(results, status) {
   if (status === google.maps.places.PlacesServiceStatus.OK) {
     const resultsContainer = document.getElementById("results-container");
     resultsContainer.innerHTML = "";
+    // Keep track of the markers added to the map
+    const markers = [];
     for (let i = 0; i < results.length; i++) {
       const place = results[i];
       // Add a marker for each place
@@ -54,42 +72,44 @@ function displayResults(results, status) {
         map: map,
         title: place.name,
       });
+      // Add the marker to the markers array
+      markers.push(placeMarker);
       // Add place details and review form to the results container
       const resultDiv = document.createElement("div");
       resultDiv.classList.add("result");
       resultDiv.innerHTML = `
-  <h2>${place.name}</h2>
-  <p>${place.vicinity}</p>
-  <div class="rating">
-    <img src="${place.rating ? "./assets/images/star.jpg" : "no-star.png"}" alt="star" />
-    <span>${place.rating ? place.rating.toFixed(1) : "N/A"}</span>
-  </div>
-  <a href="${place.website}" target="_blank">${place.website}</a>
-  <form class="review-form">
-    <h3>Leave a review</h3>
-    <div class="form-group">
-      <label for="name-input">Name:</label>
-      <input type="text" id="name-input" required />
-    </div>
-    <div class="form-group">
-      <label for="rating-input">Rating:</label>
-      <select id="rating-input" required>
-        <option value="">Select a rating</option>
-        <option value="5">5 stars</option>
-        <option value="4">4 stars</option>
-        <option value="3">3 stars</option>
-        <option value="2">2 stars</option>
-        <option value="1">1 star</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="comment-input">Comment:</label>
-      <textarea id="comment-input" required></textarea>
-    </div>
-    <button type="submit">Submit review</button>
-  </form>
-  <ul class="review-list"></ul>
-`;
+        <h2>${place.name}</h2>
+        <p>${place.vicinity}</p>
+        <div class="rating">
+          <img src="${place.rating ? "star.png" : "no-star.png"}" alt="star" />
+          <span>${place.rating ? place.rating.toFixed(1) : "N/A"}</span>
+        </div>
+        <a href="${place.website}" target="_blank">${place.website}</a>
+        <form class="review-form">
+          <h3>Leave a review</h3>
+          <div class="form-group">
+            <label for="name-input">Name:</label>
+            <input type="text" id="name-input" required />
+          </div>
+          <div class="form-group">
+            <label for="rating-input">Rating:</label>
+            <select id="rating-input" required>
+              <option value="">Select a rating</option>
+              <option value="5">5 stars</option>
+              <option value="4">4 stars</option>
+              <option value="3">3 stars</option>
+              <option value="2">2 stars</option>
+              <option value="1">1 star</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="comment-input">Comment:</label>
+            <textarea id="comment-input" required></textarea>
+          </div>
+          <button type="submit">Submit review</button>
+        </form>
+        <ul class="review-list"></ul>
+      `;
       resultsContainer.appendChild(resultDiv);
       // Listen for submission of review form
       const reviewForm = resultDiv.querySelector(".review-form");
@@ -127,7 +147,7 @@ function displayResults(results, status) {
             <div class="review-header">
               <h4>${name}</h4>
               <img src="${
-                rating > 0 ? "/assets/images/star.jpg" : "no-star.png"
+                rating > 0 ? "star.png" : "no-star.png"
               }" alt="star" />
               <span>${rating > 0 ? rating + " stars" : "N/A"}</span>
             </div>
@@ -154,4 +174,54 @@ function loadMapsAPI() {
 // Wait for the DOM to load before initializing the application
 document.addEventListener("DOMContentLoaded", function () {
   loadMapsAPI();
+});
+
+// Listen for submission of comment form
+const commentForm = document.getElementById("comment-form");
+commentForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const name = this.querySelector("#name-input").value;
+  const email = this.querySelector("#email-input").value;
+  const message = this.querySelector("#comment-input").value;
+  const comment = {
+    name: name,
+    email: email,
+    message: message,
+  };
+  // Store the comment in local storage
+  const comments = JSON.parse(localStorage.getItem("comments")) || [];
+  comments.push(comment);
+  localStorage.setItem("comments", JSON.stringify(comments));
+
+  // Show the confirmation message
+  const confirmationMsg = document.getElementById("confirmation-msg");
+  confirmationMsg.style.display = "block";
+  setTimeout(function () {
+    confirmationMsg.style.display = "none";
+  }, 2000);
+
+  // Clear the form fields
+  this.reset();
+});
+
+// This will display a message saying "Welcome!" if the email is "example@example.com"
+// and the password is "password", and display a message saying "Incorrect email or password." otherwise.
+
+const loginForm = document.getElementById("login-form");
+
+loginForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const email = document.getElementById("email-input").value;
+  const password = document.getElementById("password-input").value;
+
+  if (email === "example@example.com" && password === "password") {
+    alert("Welcome!");
+  } else {
+    alert("Incorrect email or password.");
+  }
+  // Refresh the page after 1 seconds
+  setTimeout(function () {
+    location.reload();
+  }, 1000);
 });
