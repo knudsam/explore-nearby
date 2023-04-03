@@ -225,3 +225,56 @@ loginForm.addEventListener("submit", (event) => {
     location.reload();
   }, 1000);
 });
+
+// Live flight data
+var mymap = L.map("mapid").setView([51.505, -0.09], 13);
+
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution:
+    'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+  maxZoom: 18,
+}).addTo(mymap);
+
+// Function to get flight data and update markers on the map
+function getFlightData() {
+  fetch("https://opensky-network.org/api/states/all")
+    .then((response) => response.json())
+    .then((data) => {
+      // Remove all existing markers
+      mymap.eachLayer(function (layer) {
+        if (layer instanceof L.Marker) {
+          mymap.removeLayer(layer);
+        }
+      });
+
+      // Add new markers for each flight
+      data.states.forEach((state) => {
+        if (state !== null) {
+          // add null/undefined check
+          var marker = L.marker([state[6], state[5]]).addTo(mymap);
+          marker.bindPopup(
+            `<b>${state[1]}</b><br>Altitude: ${state[7]}<br>Speed: ${state[9]}<br>Heading: ${state[10]}`
+          );
+        }
+
+        var flightDataRow = document.createElement("tr");
+        flightDataRow.innerHTML = `
+          <td>${state[1]}</td>
+          <td>${state[2]}</td>
+          <td>${state[4]}</td>
+          <td>${state[7]}</td>
+          <td>${state[9]}</td>
+          <td>${state[10]}</td>
+        `;
+
+        document.getElementById("flight-data-body").appendChild(flightDataRow);
+      });
+
+      // Call the function again after 4 hours
+      setTimeout(getFlightData, 14400000);
+    })
+    .catch((error) => console.error("Error fetching flight data:", error));
+}
+
+// Call the function to start getting flight data
+getFlightData();
