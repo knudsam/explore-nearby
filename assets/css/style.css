@@ -153,3 +153,43 @@ main {
   text-decoration: none;
   transition: color 0.2s ease-in-out;
 }
+
+/* Set the styles for the links in each result container when they are hovered */
+.result a:hover {
+  color: #333;
+}
+
+/* Set the styles for the images in each result container */
+.result img {
+  width: 100%;
+  height: auto;
+  margin: 0.5rem 0;
+}
+
+/* Set the styles for the rating section in each result container */
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.rating img {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+}
+
+.rating span {
+  font-weight: bold;
+  color: #ff5722;
+}
+
+.rating img {
+  height: 16px;
+  width: 16px;
+  margin-right: 5px;
+  content: url(star.png);
+}
+
+/*.rating img[src="no-star.png"] {
+  content: url(no-star.png);
+}
