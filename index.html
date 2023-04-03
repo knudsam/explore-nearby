@@ -38,15 +38,24 @@
   </head>
 
   <body>
+    <!-- Header section -->
     <header>
       <div class="title-wrapper">
         <h1>Explore Beyond</h1>
         <p class="title-description">Unleash Your Inner Explorer</p>
+
+        <!-- Container for displaying current time -->
+        <div id="time-container"></div>
+
+        <!-- Container for displaying current weather -->
+        <div id="weather-container"></div>
       </div>
 
       <!-- Search form for searching nearby places -->
       <form id="search-form">
-        <!-- <input type="text" id="search-input" placeholder="Search for places" />  -->
+        <!-- <input type="text" id="search-input" placeholder="Search for places" /> future code -->
+
+        <!-- Dropdown list of search types -->
         <select id="search-type">
           <option value="restaurant">Restaurants</option>
           <option value="parks">Parks</option>
@@ -54,10 +63,11 @@
           <option value="hotels">Hotels</option>
           <!--Add more search types as needed-->
         </select>
+        <!-- Submit button for the search form -->
         <button type="submit" id="search-button">Search</button>
       </form>
 
-      <!-- User login option -->
+      <!-- User login form -->
       <form id="login-form">
         <div>
           <label for="email-inputlogin">Email:</label>
@@ -81,14 +91,15 @@
       </form>
     </header>
 
+    <!-- Welcome message displayed after successful login -->
     <div id="welcome-message"></div>
 
+    <!-- Search box for searching for a place or address on the map -->
     <input
       type="text"
       id="map-search-box"
       placeholder="Search for a place or address"
     />
-
     <!-- Input box for entering destination address for route calculation -->
     <input
       type="text"
@@ -102,9 +113,9 @@
     <!-- <div id="directions-container" style="display:block;">
       <button id="directions-button" type="submit">Directions</button>
     </div> Directions container future code -->
-    
+
     <main>
-      <!-- Container for the map display -->
+      <!-- Container for the map, weather and date and time display -->
       <div id="map-container"></div>
       <!-- Container for displaying search results -->
       <div id="results-container"></div>
@@ -130,7 +141,6 @@
             Connect with us to explore further
           </button>
         </section>
-
         <!-- Form for connecting with us and leaving a comment-->
         <form id="comment-form">
           <!--  <h2>Connect with us</h2> -->
@@ -174,18 +184,16 @@
             </div>
           </div>
         </div>
-      </div>
-    </main>
 
-     <!-- Flight data table -->
+        <!-- Flight data table -->
         <!-- Map section -->
         <section id="map-section">
           <div id="mapid"></div>
         </section>
 
-         <!-- Flight data table section -->
+        <!-- Flight data table section -->
 
-         <section id="flight-data-section">
+        <section id="flight-data-section">
           <div id="flight-data">
             <h2>Live Flight Data</h2>
             <table>
@@ -203,7 +211,9 @@
             </table>
           </div>
         </section>
-        
+
+       
+
     <!-- Footer section -->
     <footer>
       <p>
@@ -225,12 +235,27 @@
         <i style="color: red" class="fas fa-heart"></i> by Our Team | &copy;
         Explore Beyond 2023
       </p>
-      
     </footer>
+
+    <!--
+    <div id="directions-container">
+      <form id="directions-form">
+        <label for="start-input">Starting Point:</label>
+        <input type="text" id="start-input" name="start-input">
+    
+        <label for="end-input">Ending Point:</label>
+        <input type="text" id="end-input" name="end-input">
+    
+        <button type="submit">Get Directions</button>
+      </form>
+    
+      <div id="map"></div>
+      <div id="distance"></div>
+    </div> future code-->
 
     <!-- Load the Google Maps API and other necessary scripts -->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-    <script src="./assets/script/script.js"></script>
+    <script src="./assets/scripts/script.js"></script>
   </body>
 </html>
