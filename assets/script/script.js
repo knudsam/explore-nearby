@@ -33,6 +33,91 @@ function initMap() {
           alert("No details available for input: '" + place.name + "'");
         }
       });
+
+      // function to initialize the Google Places Autocomplete feature for destination
+      const destinationInput = document.getElementById("destination");
+      const destinationAutocomplete = new google.maps.places.Autocomplete(
+        destinationInput
+      );
+      destinationAutocomplete.bindTo("bounds", map);
+
+      // Initialize the directions renderer
+      directionsRenderer = new google.maps.DirectionsRenderer();
+      directionsRenderer.setMap(map);
+
+      // Get the button element and add a click event listener to it
+      const calculateRouteButton = document.getElementById("calculate-route");
+      calculateRouteButton.addEventListener("click", calculateRoute);
+
+      function calculateRoute() {
+        // Get the origin and destination from the autocomplete inputs
+        const origin = input.value;
+        const destination = destinationInput.value;
+
+        // Initialize the DirectionsService and DirectionsRenderer
+        const directionsService = new google.maps.DirectionsService();
+        directionsRenderer = new google.maps.DirectionsRenderer();
+        directionsRenderer.setMap(map);
+
+        //future-code const directionsButton = document.getElementById("directions-button");
+        //console.log(directionsButton); // Adding this line to test
+        // const directionsContainer = document.getElementById("directions-container");
+        //directionsButton.addEventListener("click", function() {
+        // console.log("Clicked"); // Adding this line to test
+        // directionsContainer.style.display = "block";
+        //});
+
+        // Set up the request for the DirectionsService
+        const request = {
+          origin: origin,
+          destination: destination,
+          travelMode: google.maps.TravelMode.DRIVING,
+        };
+
+        // Call the DirectionsService to get the route
+        directionsService.route(request, function (result, status) {
+          if (status == google.maps.DirectionsStatus.OK) {
+            // Display the route on the map using the DirectionsRenderer
+            directionsRenderer.setDirections(result);
+          } else {
+            console.error("Error getting directions:", status);
+          }
+        });
+      }
+
+      const directionsService = new google.maps.DirectionsService();
+
+      document
+        .getElementById("calculate-route")
+        .addEventListener("click", function () {
+          const start = new google.maps.LatLng(lat, lng);
+          const destination =
+            destinationAutocomplete.getPlace().geometry.location;
+
+          const request = {
+            origin: start,
+            destination: destination,
+            travelMode: "DRIVING",
+          };
+
+          directionsService.route(request, function (result, status) {
+            if (status == "OK") {
+              directionsRenderer.setDirections(result);
+            }
+          });
+        });
+
+
+
+
+
+
+
+
+
+
+
+
     },
     function () {
       alert("Could not retrieve your location.");
