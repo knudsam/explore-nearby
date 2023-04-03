@@ -7,6 +7,33 @@ function initMap() {
     function (position) {
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
+
+       // Get the current date and time
+       const updateTime = () => {
+        const date = new Date();
+        const currentTime = date.toLocaleString();
+        const timeContainer = document.getElementById("time-container");
+        timeContainer.innerHTML = `Current Time: ${currentTime}`;
+      };
+      updateTime();
+      setInterval(updateTime, 1000);
+
+       // Make a request to the OpenWeatherMap API to get the weather information for the user's location
+       fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=81822968b5a226abb1a2fbacd053f10a`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          const temp = Math.round((data.main.temp - 273.15) * 1.8 + 32);
+          const desc = data.weather[0].description;
+          // Display the weather information and current time on the page
+          const weatherContainer = document.getElementById("weather-container");
+          weatherContainer.innerHTML = `Temperature: ${temp}°C, ${desc}`;
+        })
+        .catch((error) => {
+          console.error("Error fetching weather data:", error);
+        });
+
       map = new google.maps.Map(document.getElementById("map-container"), {
         center: { lat: lat, lng: lng },
         zoom: 15,
