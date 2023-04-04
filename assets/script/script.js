@@ -478,7 +478,7 @@ function getFlightData() {
 }
 
 // Call the function to start getting flight data
-// getFlightData();
+ getFlightData();
 
 
 // Google Translate function https://rapidapi.com/googlecloud/api/google-translate1/
