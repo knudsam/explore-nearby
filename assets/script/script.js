@@ -20,7 +20,7 @@ function initMap() {
 
       // Make a request to the OpenWeatherMap API to get the weather information for the user's location
       fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=81822968b5a226abb1a2fbacd053f10a`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=0e3f4b21d329fc962645a068f222bd8a`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -40,7 +40,7 @@ function initMap() {
       });
 
       // Make a request to the News API to get the latest news based on the user's location
-      const url = `https://newsapi.org/v2/top-headlines?country=us&category=general&pageSize=10&apiKey=256a5356438c4e82bead4f37f7bd8746&lat=${lat}&lon=${lng}`;
+      const url = `https://newsapi.org/v2/top-headlines?country=us&category=general&pageSize=10&apiKey=43e5d043f835486785ec24801cfea51b=${lat}&lon=${lng}`;
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
