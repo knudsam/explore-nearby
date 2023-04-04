@@ -478,7 +478,7 @@ function getFlightData() {
 }
 
 // Call the function to start getting flight data
-getFlightData();
+// getFlightData();
 
 
 // Google Translate function https://rapidapi.com/googlecloud/api/google-translate1/
@@ -547,3 +547,32 @@ form.addEventListener("submit", (event) => {
       console.error("Error detecting language:", error);
     });
 });
+
+
+  // Check Weather section
+  const tempEl = document.getElementById('temp')
+  const descEl = document.getElementById('desc')
+  const formEl = document.getElementById('weather-form')
+  const zipInput = document.getElementById('zip')
+  
+  // Check Weather Define event listeners
+  formEl.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const zip = zipInput.value
+    getWeather(zip)
+  })
+  
+  // Check Weather Functions 
+  function getWeather(zip) {
+    const apiKey = '467355df4c808dd6134a3b64e9ace282'
+    const units = 'imperial'
+    const path = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${apiKey}&units=${units}`
+    fetch(path)
+      .then(res => res.json())
+      .then(json => {
+        tempEl.innerHTML = json.main.temp
+        descEl.innerHTML = json.weather[0].description
+        formEl.reset() // Reset the form
+      })
+      .catch(err => console.log(err.message))
+  }
