@@ -46,7 +46,7 @@ The JavaScript code integrates several APIs to create a web application that dis
 
 	form event listener waits for the submission of a form, detects the language of the input text, translates it to the selected language, and displays the translated text.
 
-	Our web application offers an all-encompassing and personalized travel experience, providing users with the latest news and weather updates, nearby places of interest, and live flight data.
+Our web application offers an all-encompassing and personalized travel experience, providing users with the latest news and weather updates, nearby places of interest, and live flight data.
 
 
 ## Features
@@ -70,7 +70,7 @@ The JavaScript code integrates several APIs to create a web application that dis
 
 ## Technologies
 
-The app is developed using the following technologies:
+The application is developed using the following technologies:
 
 	HTML/CSS/JavaScript - The frontend of our app is built using these three core web technologies.
 
