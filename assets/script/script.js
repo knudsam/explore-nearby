@@ -152,7 +152,7 @@ function initMap() {
           travelMode: google.maps.TravelMode.DRIVING,
         };
 
-        // Call the DirectionsService to get the route
+        // Call the Directions Service to get the route
         directionsService.route(request, function (result, status) {
           if (status == google.maps.DirectionsStatus.OK) {
             // Display the route on the map using the DirectionsRenderer
@@ -410,7 +410,25 @@ socket.addEventListener("message", (event) => {
 });
 
 // Live flight data
-var mymap = L.map("mapid").setView([51.505, -0.09], 13);
+var mymap = L.map("mapid");
+
+// Get user's current location
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function (position) {
+    // Set the view of the map to the user's current location
+    mymap.setView(
+      [position.coords.latitude, position.coords.longitude],
+      13
+    );
+
+    // Add a marker for the user's location
+    L.marker([position.coords.latitude, position.coords.longitude])
+      .addTo(mymap)
+      .bindPopup("You are here.");
+  });
+} else {
+  alert("Geolocation is not supported by this browser.");
+}
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution:
@@ -461,6 +479,7 @@ function getFlightData() {
 
 // Call the function to start getting flight data
 getFlightData();
+
 
 // Google Translate function https://rapidapi.com/googlecloud/api/google-translate1/
 
