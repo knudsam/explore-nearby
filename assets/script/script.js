@@ -232,7 +232,7 @@ function displayResults(results, status) {
         <h2>${place.name}</h2>
         <p>${place.vicinity}</p>
         <div class="rating">
-          <img src="${place.rating ? "star.png" : "no-star.png"}" alt="star" />
+        <img src="${place.rating ? "star.png" : "no-star.png"}" alt="star" />
           <span>${place.rating ? place.rating.toFixed(1) : "N/A"}</span>
         </div>
         <a href="${place.website}" target="_blank">${place.website}</a>

@@ -185,16 +185,15 @@ main {
   color: #ff5722;
 }
 
-.rating img {
-  height: 16px;
-  width: 16px;
-  margin-right: 5px;
-  content: url(star.png);
+.rating img[src="no-star.png"]::before {
+  content: url('/assets/images/no-star.png');
 }
 
-/*.rating img[src="no-star.png"] {
-  content: url(no-star.png);
+.rating img[src="star.png"]::before {
+  content: url('/assets/images/star.png');
 }
+
+
 
 /* Set the styles for the review form */
 .review-form {
