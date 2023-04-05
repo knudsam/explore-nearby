@@ -1,27 +1,61 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
   <head>
+    <!-- Meta information -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Explore Nearby</title>
+    <title>Explore Beyond</title>
+
+    <!-- Link to custom CSS file -->
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- Link to Font Awesome icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+
+    <!-- Google Maps API script -->
     <script src="https://apis.google.com/js/api.js"></script>
+
+    <!-- Link to Leaflet CSS file for map display -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha384-VzLXTJGPSyTLX6d96AxgkKvE/LRb7ECGyTxuwtpjHnVWVZs2gp5RDjeM/tgBnVdM"
+      crossorigin=""
+    />
+    <!-- Link to Leaflet JavaScript file for map display -->
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha384-RFZC58YeKApoNsIbBxf4z6JJXmh+geBSgkCQXFyh+4tiFSJmJBt+2FbjxW7Ar16M"
+      crossorigin=""
+    ></script>
+
+    <!-- Link to OpenWeatherMap API script for weather data -->
+    <script src="https://api.openweathermap.org/data/2.5/weather"></script>
+    <!-- Link to Axios script for making HTTP requests -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
 
   <body>
+    <!-- Header section -->
     <header>
       <div class="title-wrapper">
         <h1>Explore Beyond</h1>
         <p class="title-description">Unleash Your Inner Explorer</p>
+
+        <!-- Container for displaying current time -->
+        <div id="time-container"></div>
+
+        <!-- Container for displaying current weather -->
+        <div id="weather-container"></div>
       </div>
 
       <!-- Search form for searching nearby places -->
       <form id="search-form">
-        <!-- <input type="text" id="search-input" placeholder="Search for places" />  -->
+        <!-- <input type="text" id="search-input" placeholder="Search for places" /> future code -->
+
+        <!-- Dropdown list of search types -->
         <select id="search-type">
           <option value="restaurant">Restaurants</option>
           <option value="parks">Parks</option>
@@ -29,10 +63,11 @@
           <option value="hotels">Hotels</option>
           <!--Add more search types as needed-->
         </select>
+        <!-- Submit button for the search form -->
         <button type="submit" id="search-button">Search</button>
       </form>
 
-      <!-- User login option -->
+      <!-- User login form -->
       <form id="login-form">
         <div>
           <label for="email-inputlogin">Email:</label>
@@ -56,20 +91,122 @@
       </form>
     </header>
 
+    <!-- Welcome message displayed after successful login -->
     <div id="welcome-message"></div>
 
+    <!-- Search box for searching for a place or address on the map -->
     <input
       type="text"
       id="map-search-box"
       placeholder="Search for a place or address"
     />
+    <!-- Input box for entering destination address for route calculation -->
+    <input
+      type="text"
+      id="destination"
+      name="destination"
+      placeholder="Enter your destination"
+      required
+    />
+    <!-- Button for calculating and displaying route on the map -->
+    <button id="calculate-route" type="submit">Calculate Route</button>
+    <!-- <div id="directions-container" style="display:block;">
+      <button id="directions-button" type="submit">Directions</button>
+    </div> Directions container future code -->
+
     <main>
-      <!-- Container for the map display -->
+      <!-- Container for the map, weather and date and time display -->
       <div id="map-container"></div>
       <!-- Container for displaying search results -->
       <div id="results-container"></div>
       <!-- Container for leaving reviews -->
       <div id="review-form-container">
+        <!-- Flight data table -->
+        <!-- Map section -->
+        <section id="map-section">
+          <div id="mapid"></div>
+        </section>
+        <!-- Flight data table section -->
+
+        <section id="flight-data-section">
+          <div id="flight-data">
+            <h2>Live Flight Data</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Flight Number</th>
+                  <th>Departure Airport</th>
+                  <th>Destination Airport</th>
+                  <th>Altitude</th>
+                  <th>Speed</th>
+                  <th>Heading</th>
+                </tr>
+              </thead>
+              <tbody id="flight-data-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Google Translate table section -->
+
+        <section id="translate-section">
+          <h2>Translate</h2>
+          <form>
+            <label for="translate-input">Text to translate:</label>
+            <input
+              type="text"
+              id="translate-input"
+              name="translate-input"
+              required
+            />
+            <label for="translate-language">Target language:</label>
+            <select id="translate-language" name="translate-language" required>
+              <option value="">Select a language</option>
+              <option value="en">English</option>
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+              <option value="it">Italian</option>
+              <option value="ja">Japanese</option>
+              <option value="ko">Korean</option>
+              <option value="pt">Portuguese</option>
+              <option value="ru">Russian</option>
+              <option value="zh-CN">Simplified Chinese</option>
+              <option value="zh-TW">Traditional Chinese</option>
+            </select>
+            <button type="submit">Translate</button>
+          </form>
+          <div id="translation"></div>
+        </section>
+
+        <!-- News articles section -->
+
+        <section id="news-section">
+          <h2>Latest News</h2>
+          <div id="news-container">
+            <div class="loader"></div>
+          </div>
+        </section>
+
+        <!-- Check Weather section -->
+
+        <section id="weather-section">
+          <h2>Check Weather</h2>
+          <div id="weather-search-container">
+            <h1 id="temp"></h1>
+            <p id="desc"></p>
+          </div>
+          <form id="weather-form">
+            <input
+              id="zip"
+              type="number"
+              placeholder="Please Enter a valid Zip Code"
+              pattern="^\d{5}(?:[-\s]\d{4})?$"
+            />
+            <button type="weather-search">Search</button>
+          </form>
+        </section>
+
         <!-- Container for personalized services -->
         <section id="services-container">
           <h2>Personalized Services</h2>
@@ -90,7 +227,6 @@
             Connect with us to explore further
           </button>
         </section>
-
         <!-- Form for connecting with us and leaving a comment-->
         <form id="comment-form">
           <!--  <h2>Connect with us</h2> -->
@@ -158,8 +294,23 @@
         <i style="color: red" class="fas fa-heart"></i> by Our Team | &copy;
         Explore Beyond 2023
       </p>
-      
     </footer>
+
+    <!--
+    <div id="directions-container">
+      <form id="directions-form">
+        <label for="start-input">Starting Point:</label>
+        <input type="text" id="start-input" name="start-input">
+    
+        <label for="end-input">Ending Point:</label>
+        <input type="text" id="end-input" name="end-input">
+    
+        <button type="submit">Get Directions</button>
+      </form>
+    
+      <div id="map"></div>
+      <div id="distance"></div>
+    </div> future code-->
 
     <!-- Load the Google Maps API and other necessary scripts -->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
