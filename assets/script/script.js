@@ -232,10 +232,10 @@ function displayResults(results, status) {
         <h2>${place.name}</h2>
         <p>${place.vicinity}</p>
         <div class="rating">
-        <img src="${place.rating ? "star.png" : "no-star.png"}" alt="star" />
+          <img src="${place.rating ? "star1.png" : "no-star.png"}" alt="star" />
           <span>${place.rating ? place.rating.toFixed(1) : "N/A"}</span>
         </div>
-        <a href="${place.website}" target="_blank">${place.website}</a>
+        <a class="result-website" target="_blank"></a>
         <form class="review-form">
           <h3>Leave a review</h3>
           <div class="form-group">
@@ -261,19 +261,27 @@ function displayResults(results, status) {
         </form>
         <ul class="review-list"></ul>
       `;
+ // Update the websiteEl element
+ const websiteEl = resultDiv.querySelector('.result-website');
+ if (place.website) {
+   websiteEl.href = place.website;
+   websiteEl.textContent = place.website;
+ } else {
+   websiteEl.style.display = 'none';
+ }
       resultsContainer.appendChild(resultDiv);
-      // Listen for submission of review form
-      const reviewForm = resultDiv.querySelector(".review-form");
-      reviewForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const name = this.querySelector("#name-input").value;
-        const rating = this.querySelector("#rating-input").value;
-        const comment = this.querySelector("#comment-input").value;
-        const review = {
-          name: name,
-          rating: rating,
-          comment: comment,
-        };
+     // Listen for submission of review form
+     const reviewForm = resultDiv.querySelector(".review-form");
+     reviewForm.addEventListener("submit", function (event) {
+       event.preventDefault();
+       const name = this.querySelector("#name-input").value;
+       const rating = this.querySelector("#rating-input").value;
+       const comment = this.querySelector("#comment-input").value;
+       const review = {
+         name: name,
+         rating: rating,
+         comment: comment,
+       };
         // Store the review in local storage
         const reviews = JSON.parse(localStorage.getItem("reviews")) || {};
         const placeId = place.place_id;
@@ -298,7 +306,7 @@ function displayResults(results, status) {
             <div class="review-header">
               <h4>${name}</h4>
               <img src="${
-                rating > 0 ? "star.png" : "no-star.png"
+                rating > 0 ? "star1.png" : "no-star.png"
               }" alt="star" />
               <span>${rating > 0 ? rating + " stars" : "N/A"}</span>
             </div>
