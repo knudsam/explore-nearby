@@ -47,15 +47,16 @@ The JavaScript code integrates several APIs to create a web application that dis
 
 Our web application offers an all-encompassing and personalized travel experience, providing users with the latest news and weather updates, nearby places of interest, and live flight data.
 ##Breakdown of Tasks
-Muhammad Front-end development of the homepage, Design and implementation of the user interface, Integration of the Google Maps API
-Samantha
-Development of the search functionality for locations, Integration of the Weather API to display location details, Implementation of user reviews and feedback feature
-Elijah
-Integration of the New API to display current local news, Implementation of live flight data display, Development of user account functionality and login system
-Joey
-Implementation of the language translation service, Development of the contact form feature, Design and implementation of the search results page
-Carolina
-Testing and debugging of the entire application
+
+Muhammad: Front-end development of the homepage, Design and implementation of the user interface, Integration of the Google Maps API
+
+Samantha: Development of the search functionality for locations, Integration of the Weather API to display location details, Implementation of user reviews and feedback feature
+
+Elijah: Integration of the New API to display current local news, Implementation of live flight data display, Development of user account functionality and login system
+
+Joey: Implementation of the language translation service, Development of the contact form feature, Design and implementation of the search results page
+
+Carolina: Testing and debugging of the entire application
 
 ## Features
 
