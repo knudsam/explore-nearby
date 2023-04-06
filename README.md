@@ -46,7 +46,8 @@ The JavaScript code integrates several APIs to create a web application that dis
    form event listener waits for the submission of a form, detects the language of the input text, translates it to the selected language, and displays the translated text.
 
 Our web application offers an all-encompassing and personalized travel experience, providing users with the latest news and weather updates, nearby places of interest, and live flight data.
-##Breakdown of Tasks
+
+## Breakdown of tasks
 
 Muhammad: Front-end development of the homepage, Design and implementation of the user interface, Integration of the Google Maps API
 
