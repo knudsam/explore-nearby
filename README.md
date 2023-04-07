@@ -47,7 +47,7 @@ The JavaScript code integrates several APIs to create a web application that dis
 
 Our web application offers an all-encompassing and personalized travel experience, providing users with the latest news and weather updates, nearby places of interest, and live flight data.
 
-## Breakdown of tasks
+## Task Breakdown
 
  Muhammad: Front-end development of the homepage, Design and implementation of the user interface, Integration of the Google Maps API. Code review, testing and debugging of the entire application
 
