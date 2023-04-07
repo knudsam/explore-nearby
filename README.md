@@ -123,9 +123,9 @@ Explore Beyond is licensed under the MIT License. Feel free to use this code for
 
 1.  Visit [Deployed Application](https://knudsam.github.io/explore-nearby/) for explore-beyond
 
-2.  Screenshot of explore-beyond ![alt Image of the application](https://github.com/knudsam/explore-nearby/blob/main/assets/images/main.png)
+2.  Screenshot of explore-beyond ![alt Image of the application](https://github.com/knudsam/explore-nearby/blob/main/assets/images/Main.PNG)
 
-3.  ![alt Image of the application](https://github.com/knudsam/explore-nearby/blob/main/assets/images/middle.png)
+3.  ![alt Image of the application](https://github.com/knudsam/explore-nearby/blob/main/assets/images/middle.PNG)
 
 ## Contributing
 
