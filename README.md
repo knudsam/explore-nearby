@@ -58,7 +58,6 @@ Our web application offers an all-encompassing and personalized travel experienc
  Joey: Implementation of the language translation service, Development of the contact form feature, Design and implementation of the search results page
 
  Carolina: Testing and debugging of the entire application
-Testing and quality assurance, including testing.
 Continuous integration and deployment setup, to ensure the app can be easily deployed and updated
 
 ## Features
