@@ -357,7 +357,7 @@ commentForm.addEventListener("submit", function (event) {
   confirmationMsg.style.display = "block";
   setTimeout(function () {
     confirmationMsg.style.display = "none";
-  }, 2000);
+  }, 3000);
 
   // Clear the form fields
   this.reset();
